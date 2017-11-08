@@ -23,5 +23,6 @@ int getCyDeviceNum();
 bool isCypressDevice(int deviceNum, int interfaceIndex);
 void resetCyDevStruct();
 CY_RETURN_STATUS searchCyDevice(bool isprint);
+CY_RETURN_STATUS setSelectedCyDev(unsigned int index)
 
 #endif

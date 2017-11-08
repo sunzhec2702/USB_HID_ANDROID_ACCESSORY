@@ -1,8 +1,53 @@
 #include "UserInterface.h"
 #include "CyDevManager.h"
+#include "string.h"
+#include "CyDevGpioCtrl.h"
 
-void processCommand(char *command) {
 
+
+int processCommand(int argc, char **argv) {
+    // CDC mode.
+    if (argc != 2) {
+        printHelp();
+        return -1;
+    }
+
+    if(strcmp(argv[1], "reset") == 0) {
+
+    } else if (strcmp(argv[1], "reset") == 0) {
+
+    } else if (strcmp(argv[1], "reset_down") == 0) {
+        
+    } else if (strcmp(argv[1], "reset_up") == 0) {
+        
+    } else if (strcmp(argv[1], "onkey") == 0) {
+        
+    } else if (strcmp(argv[1], "onkey_down") == 0) {
+        
+    } else if (strcmp(argv[1], "onkey_up") == 0) {
+        
+    } else if (strcmp(argv[1], "onkey_hold") == 0) {
+        
+    } else if (strcmp(argv[1], "reset_recovery") == 0) {
+        
+    } else if (strcmp(argv[1], "recovery_down") == 0) {
+        
+    } else if (strcmp(argv[1], "recovery_up") == 0) {
+        
+    } else if (strcmp(argv[1], "list") == 0) {
+        
+    }
+}
+
+void exportEnvParam() {
+    char param;
+    int cyIndex;
+    if ((param = getenv("CYDEV_INDEX"))) {
+        cyIndex = atoi(param);
+    }
+    if (setSelectedCyDev(cyIndex) != CY_SUCCESS) {
+        printf("CYDEV_INDEX %d is invalid\n");
+    }
 }
 
 void printDevices() {
@@ -29,6 +74,10 @@ void printDevices() {
     }
 }
 
-void printMessage() {
+void printHelp() {
+    // TODO: If there is I2C interface, change to I2C instruction.
+    printf("Unknown argument! Acceptable args: 
+    [reset|reset_down|reset_up|onkey|onkey_down|onkey_up|onkey_hold|
+    reset_recovery|recovery_down|recovery_up|list]");
     return;
 }

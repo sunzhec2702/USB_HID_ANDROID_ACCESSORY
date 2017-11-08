@@ -11,6 +11,8 @@ static bool cyLibInitFlag = false;
 static CY_DEVICE_STRUCT cyDevices[CY_MAX_DEVICES];
 static int cyDeviceNum = 0;
 
+static int selectedCyDev = 0;
+
 CY_RETURN_STATUS initCyDevices() {
     CY_RETURN_STATUS rStatus;
     rStatus = CyLibraryInit();
@@ -28,6 +30,36 @@ int getCyDeviceNum() {
 
 CY_DEVICE_STRUCT* getCydevStruct() {
     return cyDevices;
+}
+
+CY_RETURN_STATUS setSelectedCyDev(unsigned int index) {
+    if (index >= cyDeviceNum) {
+        return CY_ERROR_INVALID_PARAMETER;
+    }
+    selectedCyDev = index;
+    return CY_SUCCESS;
+}
+
+CY_HANDLE getHandle(CY_DEVICE_TYPE type) {
+    CY_RETURN_STATUS rStatus;
+    int interfaceIndex = -1;
+    switch (type) {
+        case CY_TYPE_I2C:
+        break;
+        case CY_TYPE_SPI:
+        break;
+        case CY_TYPE_DISABLED:
+        interfaceIndex = cyDevices[selectedCyDev].numInterface
+
+    }
+    rStatus = CyOpen(deviceNum, interfaceIndex, &handle);
+    if (rStatus == CY_SUCCESS) {
+
+    }
+}
+
+void freeHandle(CY_HANDLE handle) {
+    CyClose(handle);
 }
 
 bool isCypressDevice(int deviceNum, int interfaceIndex) {
@@ -59,6 +91,7 @@ void resetCyDevStruct() {
             cyDevices[i].interfaceFunctionality[j] = -1;
         }
     }
+    cyDeviceNum = 0;
 }
 
 CY_RETURN_STATUS searchCyDevice() {
