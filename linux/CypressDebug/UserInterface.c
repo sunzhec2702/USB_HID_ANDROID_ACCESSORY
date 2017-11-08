@@ -13,29 +13,31 @@ int processCommand(int argc, char **argv) {
     }
 
     if(strcmp(argv[1], "reset") == 0) {
-
-    } else if (strcmp(argv[1], "reset") == 0) {
-
+        cyToggleKey(KEY_RESET, KEY_ON, 100000);
     } else if (strcmp(argv[1], "reset_down") == 0) {
-        
+        cySetKey(KEY_RESET, KEY_ON);
     } else if (strcmp(argv[1], "reset_up") == 0) {
-        
+        cySetKey(KEY_RESET, KEY_OFF);
     } else if (strcmp(argv[1], "onkey") == 0) {
-        
+        cyToggleKey(KEY_ONKEY, KEY_ON, 100000);
     } else if (strcmp(argv[1], "onkey_down") == 0) {
-        
+        cySetKey(KEY_ONKEY, KEY_ON);
     } else if (strcmp(argv[1], "onkey_up") == 0) {
-        
+        cySetKey(KEY_ONKEY, KEY_OFF);
     } else if (strcmp(argv[1], "onkey_hold") == 0) {
-        
+        cyToggleKey(KEY_ONKEY, KEY_ON, 12000000);
     } else if (strcmp(argv[1], "reset_recovery") == 0) {
-        
+        cySetKey(KEY_RECOVERY, KEY_ON);
+        usleep(100000);
+        cyToggleKey(KEY_RESET, KEY_ON, 100000);
+        usleep(100000);
+        cySetKey(KEY_RECOVERY, KEY_OFF);
     } else if (strcmp(argv[1], "recovery_down") == 0) {
-        
+        cySetKey(KEY_RECOVERY, KEY_ON);
     } else if (strcmp(argv[1], "recovery_up") == 0) {
-        
+        cySetKey(KEY_RECOVERY, KEY_OFF);
     } else if (strcmp(argv[1], "list") == 0) {
-        
+        printDevices();
     }
 }
 

@@ -6,6 +6,8 @@
 #define KEY_ONKEY_GPIO      15
 #define KEY_RESET_GPIO      9
 
+#define KEY_ON              0
+#define KEY_OFF             1
 typedef enum 
 {
     KEY_RECOVERY = 1 << 0,

@@ -2,6 +2,7 @@
     "files.associations": {
         "cyusbserial.h": "c",
         "cydevmanager.h": "c",
-        "userinterface.h": "c"
+        "userinterface.h": "c",
+        "cydevgpioctrl.h": "c"
     }
 }

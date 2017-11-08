@@ -40,25 +40,28 @@ CY_RETURN_STATUS setSelectedCyDev(unsigned int index) {
     return CY_SUCCESS;
 }
 
-CY_HANDLE getHandle(CY_DEVICE_TYPE type) {
+CY_HANDLE getCyHandle(CY_DEVICE_TYPE type) {
     CY_RETURN_STATUS rStatus;
+    CY_HANDLE handle;
     int interfaceIndex = -1;
     switch (type) {
         case CY_TYPE_I2C:
         break;
         case CY_TYPE_SPI:
         break;
-        case CY_TYPE_DISABLED:
-        interfaceIndex = cyDevices[selectedCyDev].numInterface
-
+        default:
+        interfaceIndex = cyDevices[selectedCyDev].numInterface - 1;
+        break;
     }
     rStatus = CyOpen(deviceNum, interfaceIndex, &handle);
     if (rStatus == CY_SUCCESS) {
-
+        return handle;
+    } else {
+        return NULL;
     }
 }
 
-void freeHandle(CY_HANDLE handle) {
+void freeCyHandle(CY_HANDLE handle) {
     CyClose(handle);
 }
 
