@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "cyusbserial.h": "c",
+        "cydevmanager.h": "c"
+    }
+}
