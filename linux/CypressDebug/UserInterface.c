@@ -39,6 +39,7 @@ int processCommand(int argc, char **argv) {
     } else if (strcmp(argv[1], "list") == 0) {
         printDevices();
     }
+    return 0;
 }
 
 void exportEnvParam() {
