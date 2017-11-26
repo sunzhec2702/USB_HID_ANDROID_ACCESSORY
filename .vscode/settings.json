@@ -1,8 +1,8 @@
 {
     "files.associations": {
-        "cyusbserial.h": "c",
-        "cydevmanager.h": "c",
-        "userinterface.h": "c",
-        "cydevgpioctrl.h": "c"
+        "main.h": "c",
+        "accessory_manager.h": "c",
+        "hid_event.h": "c",
+        "common.h": "c"
     }
 }
