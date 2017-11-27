@@ -24,6 +24,12 @@ int main(int argc, char *argv[])
         printf("Cannot setup a signal handler...\n");
     */
     int ret = 0;
+    ret = libusb_init(NULL);
+	if (ret != 0)
+    {
+		printf("libusb init failed: %d\n", ret);
+		return ret;
+	}
     ret = hid_manager_init();
     if (ret != 0)
     {
@@ -53,5 +59,6 @@ int main(int argc, char *argv[])
         exit(0);
     }
     */
+    libusb_exit(NULL);
     return 0;
 }

@@ -4,6 +4,15 @@
 static int hid_device_number = 0;
 static hid_device hid_devices[MAX_HID_DEVICES];
 
+int get_hid_device_number()
+{
+    return hid_device_number;
+}
+
+hid_device *get_hid_device(int index)
+{
+    return &hid_devices[index];
+}
 
 static void update_hid_devices(
     libusb_device *usb_device,
@@ -92,12 +101,7 @@ int hid_manager_init(void)
     libusb_device **list;
     int usb_device_number = 0, ret = 0;
     /* List every USB device attached */
-    ret = libusb_init(NULL);
-	if (ret != 0)
-    {
-		printf("libusb init failed: %d\n", ret);
-		return ret;
-	}
+
     usb_device_number = libusb_get_device_list(NULL, &list);
     if (usb_device_number < 0)
     {
@@ -148,6 +152,5 @@ int hid_manager_init(void)
     }
     printf("Found %d hid device\n", hid_device_number);
     libusb_free_device_list(list, 1);
-    libusb_exit(NULL);
     return 0;
 }

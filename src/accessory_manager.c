@@ -63,19 +63,17 @@ claim:
     return 1;
 }
 
+accessory_t* get_acc_device(void)
+{
+    return &acc_device;
+}
+
 int accessory_device_init()
 {
     int ret = 0;
     uint8_t buffer[2];
     char *tmp;
 
-    /* Initializing libusb */
-    ret = libusb_init(NULL);
-    if (ret != 0)
-    {
-        printf("libusb init failed: %d\n", ret);
-        return ret;
-    }
     /* Check if device is not already in accessory mode */
     if (check_accessory_status())
     {
@@ -202,6 +200,5 @@ int accessory_device_init()
 
 error:
     printf("Accessory init failed: %d\n", ret);
-    libusb_exit(NULL);
     return -1;
 }
