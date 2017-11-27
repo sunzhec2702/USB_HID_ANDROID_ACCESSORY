@@ -30,6 +30,14 @@ int main(int argc, char *argv[])
 		printf("libusb init failed: %d\n", ret);
 		return ret;
 	}
+
+    ret = accessory_device_init();
+    if (ret != 0)
+    {
+        printf("accessory device init failed\n");
+        exit(1);
+    }
+    
     ret = hid_manager_init();
     if (ret != 0)
     {
@@ -43,14 +51,7 @@ int main(int argc, char *argv[])
 
     }
 
-    /*
-    ret = accessory_device_init();
-    if (ret != 0)
-    {
-        printf("accessory device init failed\n");
-        exit(1);
-    }
-    */
+
     /*
     printf("Starting to sending event to accessory device\n");
     hid_manager_start_send_hid_event(HID_MOUSE);

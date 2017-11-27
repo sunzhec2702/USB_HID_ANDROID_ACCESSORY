@@ -25,6 +25,6 @@ typedef struct {
 int hid_manager_init(void);
 
 // Get the information of the HID device.
-hid_device get_hid_device(HID_TYPE type);
+hid_device *get_hid_device(int index);
 
 #endif
